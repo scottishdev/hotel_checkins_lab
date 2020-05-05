@@ -29,7 +29,7 @@ export default {
     });
 
     eventBus.$on('delete-booking', (id) => {
-      let index = this.bookings.findIndex(booking => booking._id === id);
+      const index = this.bookings.findIndex(booking => booking._id === id);
       this.bookings.splice(index, 1);
     });
   },

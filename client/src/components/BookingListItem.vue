@@ -20,6 +20,9 @@ export default {
     deleteBooking(){
       BookingService.deleteBooking(this.booking._id)
       .then(() => eventBus.$emit('delete-booking', this.booking._id));
+    },
+    updateBooking(){
+      
     }
   }
 }
