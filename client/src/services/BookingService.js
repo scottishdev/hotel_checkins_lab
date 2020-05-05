@@ -16,13 +16,14 @@ export default {
 
   deleteBooking(id){
     return fetch(baseURL + id, {method: 'DELETE'})
+  },
 
-updateBooking(payload, id){
-  return fetch(baseURL + id, {
-    method: 'PUT',
-    body: JSON.stringify(payload),
-    headers: {'Content-Type': 'application/json'}
-  }).then(res => res.json())
+  updateBooking(payload, id){
+    return fetch(baseURL + id, {
+      method: 'PUT',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    }).then(res => res.json())
   }
-
+  
 }

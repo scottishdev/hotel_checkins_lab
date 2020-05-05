@@ -3,7 +3,7 @@
     <li>
       <p>{{booking.name}}</p>
       <p>{{booking.email}}</p>
-      <button v-on:click="updateBooking">check-in</button>
+      <button v-if="!booking.checkIn" v-on:click="updateBooking">check-in</button>
       <button v-on:click="deleteBooking">delete</button>
     </li>
   </div>
@@ -22,7 +22,11 @@ export default {
       .then(() => eventBus.$emit('delete-booking', this.booking._id));
     },
     updateBooking(){
-      
+      const updatedBooking = {
+        checkIn: true
+      };
+      BookingService.updateBooking(updatedBooking, this.booking._id)
+      .then(bookingItem => eventBus.$emit('amended-checkin-status', bookingItem));
     }
   }
 }

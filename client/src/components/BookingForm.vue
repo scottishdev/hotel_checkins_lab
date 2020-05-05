@@ -4,7 +4,7 @@
     <input type="text" v-model="name" required>
 
     <label for="email">Guest Email:</label>
-    <input type="text" v-model="email" required>
+    <input type="email" v-model="email" required>
 
     <input type="submit" value="submit Booking">
   </form>
