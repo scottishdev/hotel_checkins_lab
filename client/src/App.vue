@@ -1,9 +1,12 @@
 <template lang="html">
-<booking-form></booking-form>
+  <div>
+    <booking-form></booking-form>
+    <booking-list :bookingsList="bookings"></booking-list>
+  </div>
 </template>
 
 <script>
-
+import BookingService from '@/services/BookingService.js';
 import BookingForm from '@/components/BookingForm.vue';
 import BookingList from '@/components/BookingList.vue';
 import {eventBus} from '@/main.js';
@@ -20,13 +23,21 @@ export default {
     'booking-list': BookingList
   },
   mounted(){
-    
-
+    this.fetchBookings();
     eventBus.$on('add-booking', (booking) => {
       this.bookings.push(booking)
     });
-  }
 
+    eventBus.$on('delete-booking', (id) => {
+      const index = this.bookings.findIndex(booking => booking._id === id);
+      this.bookings.splice(index, 1);
+    });
+  },
+  methods: {
+    fetchBookings(){
+      BookingService.getBookings().then(bookingItems => this.bookings = bookingItems);
+    }
+  }
 }
 </script>
 
