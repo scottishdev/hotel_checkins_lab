@@ -1,10 +1,10 @@
 <template lang="html">
   <form method="post" v-on:submit.prevent="addBooking">
     <label for="name">Guest Name:</label>
-    <input type="text" v-model="name">
+    <input type="text" v-model="name" required>
 
     <label for="email">Guest Email:</label>
-    <input type="text" v-model="email">
+    <input type="text" v-model="email" required>
 
     <input type="submit" value="submit Booking">
   </form>
