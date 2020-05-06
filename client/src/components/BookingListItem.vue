@@ -1,11 +1,8 @@
 <template lang="html">
   <div>
-    <li>
-      <p>{{booking.name}}</p>
-      <p>{{booking.email}}</p>
+      <label>{{booking.name}} {{booking.email}}</label>
       <button v-if="!booking.checkIn" v-on:click="updateBooking">check-in</button>
       <button v-on:click="deleteBooking">delete</button>
-    </li>
   </div>
 </template>
 
